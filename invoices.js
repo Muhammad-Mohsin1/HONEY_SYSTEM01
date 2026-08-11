@@ -1,0 +1,3 @@
+
+function invoicesPage(){const ss=getSales().sort((a,b)=>new Date(b.date)-new Date(a.date));shell("Invoices","invoices",`<div class="card"><h2>Invoice Records</h2>${ss.length?`<div class="table-wrap"><table class="table"><thead><tr><th>Invoice</th><th>Date</th><th>Customer</th><th>Total</th><th>Status</th><th>Action</th></tr></thead><tbody>${ss.map(s=>`<tr><td>${s.invoiceNo}</td><td>${dateStr(s.date)}</td><td>${esc(s.customer.name)}</td><td>${money(s.grandTotal)}</td><td>${statusBadge(s.paymentStatus)}</td><td><button class="btn primary" onclick="openInvoice('${s.id}')">View / Print</button></td></tr>`).join("")}</tbody></table></div>`:`<div class="empty">No invoices found.</div>`}</div>`)}
+invoicesPage();

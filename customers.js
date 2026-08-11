@@ -1,0 +1,3 @@
+
+function customersPage(){const cs=recomputeCustomers();shell("Customers","customers",`<div class="card"><h2>Customer Records</h2>${cs.length?`<div class="table-wrap"><table class="table"><thead><tr><th>Name</th><th>Phone</th><th>Units</th><th>Total Purchases</th><th>Paid</th><th>Remaining</th><th>Last Purchase</th></tr></thead><tbody>${cs.map(c=>`<tr><td>${esc(c.name)}</td><td>${esc(c.phone)}</td><td>${c.totalPurchases}</td><td>${money(c.totalAmount)}</td><td>${money(c.paid)}</td><td>${money(c.remaining)}</td><td>${dateStr(c.lastPurchase)}</td></tr>`).join("")}</tbody></table></div>`:`<div class="empty">No customers found.</div>`}</div>`)}
+customersPage();
